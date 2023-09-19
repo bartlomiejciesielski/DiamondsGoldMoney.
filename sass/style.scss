@@ -30,6 +30,27 @@ h1.company-name {
 	overflow: hidden;
 }
 
+.section-title {
+	position: relative;
+	margin: 0 auto 2em;
+	font-size: 3.2rem;
+	color: colors.$gold;
+	font-weight: 200;
+	width: fit-content;
+	&::before {
+		position: absolute;
+		bottom: -0.1em;
+		left: 0;
+		width: 40px;
+		height: 2px;
+		background-color: colors.$gold;
+		content: '';
+	}
+	span {
+		font-weight: 900;
+	}
+}
+
 //====================================
 //HEADER =============================
 //====================================
@@ -137,7 +158,7 @@ h1.company-name {
 		color: colors.$darker;
 		text-transform: uppercase;
 		text-decoration: none;
-		transition: color .3s;
+		transition: color 0.3s;
 		&:hover {
 			color: colors.$gold;
 		}
@@ -167,7 +188,7 @@ h1.company-name {
 		border: 1px solid transparent; // dzięki dodaniu border: transparent obiekty nie "skaczą" podczas akcji na :hover.
 		border-radius: 8px;
 		background-color: colors.$dark;
-		transition: background-color .3s, border .3s;
+		transition: background-color 0.3s, border 0.3s;
 		z-index: 5;
 		&:hover {
 			background-color: colors.$darker;
@@ -176,7 +197,7 @@ h1.company-name {
 		}
 		&::before {
 			position: absolute;
-			content: "";
+			content: '';
 			width: 100%;
 			height: 100%;
 			border: 1px solid colors.$gold;
@@ -191,7 +212,7 @@ h1.company-name {
 			margin-bottom: 1em;
 			width: 60px;
 		}
-		
+
 		h3 {
 			margin-bottom: 0.6em;
 			text-transform: uppercase;
@@ -199,24 +220,233 @@ h1.company-name {
 
 		&--one {
 			grid-row: 1/2;
-			grid-column: 1/-1 //podając wartość ujemną sprawimy że element zostanie rozciągnięty na całą szerokość strony.
+			grid-column: 1/-1; //podając wartość ujemną sprawimy że element zostanie rozciągnięty na całą szerokość strony.
 		}
 		&--two {
 			grid-row: 2/3;
-			grid-column: 1/-1 //podając wartość ujemną sprawimy że element zostanie rozciągnięty na całą szerokość strony.
+			grid-column: 1/-1; //podając wartość ujemną sprawimy że element zostanie rozciągnięty na całą szerokość strony.
 		}
 		&--three {
 			grid-row: 3/4;
-			grid-column: 1/-1 //podając wartość ujemną sprawimy że element zostanie rozciągnięty na całą szerokość strony.
+			grid-column: 1/-1; //podając wartość ujemną sprawimy że element zostanie rozciągnięty na całą szerokość strony.
+		}
+	}
+}
+
+//====================================
+//MAIN ===============================
+//info ===============================
+
+.info {
+	position: relative;
+	display: grid;
+	grid-template-areas:
+		'title'
+		'box'
+		'box';
+	padding: 6em 2em;
+	&__title {
+		grid-area: title;
+	}
+	&__boxes {
+		grid-area: box;
+	}
+	&__box-img {
+		width: 100%;
+		object-fit: cover;
+		filter: sepia();
+	}
+	&__box-title {
+		margin: 0.3em 0;
+		font-size: 2.6rem;
+		color: colors.$gold;
+		font-weight: 200;
+	}
+	&__box-text {
+		margin-bottom: 0.5em;
+	}
+	&__box-link {
+		display: block;
+		margin-bottom: 2em;
+		font-weight: bold;
+		color: colors.$gold;
+		text-align: right;
+		text-decoration: none;
+		transition: color 0.3s;
+		&:hover {
+			color: colors.$darkgold;
+		}
+	}
+	&__bg-icon {
+		display: none;
+	}
+}
+
+//====================================
+//MAIN ===============================
+//plans ==============================
+
+.plans {
+	padding: 6em 2em;
+	background-color: colors.$darker;
+	&__box {
+		margin: 1em 0;
+		padding: 2em 1em;
+		text-align: center;
+		border: 1px solid transparent;
+		border-radius: 8px;
+		background-color: colors.$dark;
+		transition: background-color 0.3s, border 0.3s;
+		cursor: pointer;
+		&:hover {
+			background-color: colors.$darker;
+			border: 1px solid colors.$gold;
+		}
+	}
+	&__item {
+		margin: 1em 0;
+	}
+	&__item-icon {
+		width: 50px;
+	}
+	&__item-name {
+		margin-top: 0;
+		margin-bottom: 1.5em;
+		font-size: 1.8rem;
+		color: colors.$gold;
+	}
+}
+
+//====================================
+//MAIN ===============================
+//newsletter =========================
+
+.newsletter {
+	padding: 8em 2em;
+	background-color: colors.$red;
+	text-align: center;
+	&__text {
+		padding: 1em;
+		margin-bottom: 1em;
+		font-size: 4rem;
+		font-weight: 200;
+	}
+	&__form {
+		input {
+			margin-bottom: 1em;
+			padding: 1em;
+			width: 100%;
+			background-color: colors.$white;
+			border: 1px solid transparent;
+		}
+		button {
+			padding: 1em;
+			border: 1px solid colors.$gold;
+			background: none;
+			color: colors.$gold;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background-color 0.3s, color 0.3s;
+			&:hover {
+				color: colors.$red;
+				background-color: colors.$gold;
+			}
+		}
+	}
+}
+
+//====================================
+//MAIN ===============================
+//gallery ============================
+
+.gallery {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	&__img {
+		height: 300px;
+		width: 100%;
+		object-fit: cover;
+		&:nth-child(odd) {
+			display: none;
+		}
+	}
+}
+
+//====================================
+//MAIN ===============================
+//contact ============================
+
+.contact {
+	padding: 6em 2em;
+	&__form {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+	}
+	&__form-box {
+		label {
+			display: block;
+			margin-bottom: 0.5em;
+			font-size: 2rem;
+		}
+		textarea {
+			max-width: 100%;
+			width: 100%;
+			min-width: 100%;
+		}
+		input,
+		textarea {
+			padding: 1em 2em;
+			margin-bottom: 2em;
+			width: 100%;
+			color: colors.$white;
+			background: none;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			&:focus {
+				outline: none;
+				border: 1px solid colors.$gold;
+			}
+		}
+		&:nth-child(1) {
+			grid-column: 1/-1;
+			grid-row: 1/2;
+		}
+		&:nth-child(2) {
+			grid-column: 1/-1;
+			grid-row: 2/3;
+		}
+		&:nth-child(3) {
+			grid-column: 1/-1;
+			grid-row: 3/4;
+		}
+	}
+	&__form-btn {
+		grid-column: 1/3;
+		grid-row: 4/5;
+		padding: 1em;
+		border: 1px solid colors.$gold;
+		background: none;
+		font-weight: bold;
+		color: colors.$gold;
+		cursor: pointer;
+		transition: background-color .3s, color .3s;
+		&:hover, &:focus {
+			outline: none;
+			color: colors.$dark;
+			background-color: colors.$gold;
 		}
 
 	}
 }
 
+//====================================
+//FOOTER ===============================
+//====================================
 
-
-
-
+.footer {
+	padding: 3em 1em;
+	border-top: 1px solid colors.$darker;
+	text-align: center;
+}
 
 @import 'small';
 @import 'medium';
